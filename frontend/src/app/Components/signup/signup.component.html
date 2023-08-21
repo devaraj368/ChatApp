@@ -1,0 +1,91 @@
+<section class=" gradient-custom">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="card bg-primary text-white" style="border-radius: 1rem;">
+            <div class="card-body p-5 m-1 text-center">
+  
+              <form [formGroup]="signup" (ngSubmit)="signupaccount()" class="pb-5">
+  
+                <h2 class="fw-bold mb-2 text-uppercase">Signup</h2>
+                <p class="text-white-50 mb-2">Please enter your details</p>
+
+                <div class="testflex row">
+
+                    <div class="form-outline form-white mb-1 col-6">
+                        <label class="form-label">Name</label>
+                        <input type="text"   class="form-control form-control-lg"  formControlName="name" [ngClass]="{'is-invalid': form2.name.errors&&(form2.name.touched||form2.name.dirty)}" />
+                        <div  *ngIf="form2.name.invalid&&(form2.name.touched|| form2.name.dirty)">
+                            <span *ngIf="form2.name.errors.required">Name cannot be empty</span>
+                            <span *ngIf="form2.name.errors.pattern">Name cannot be empty</span>
+                        </div>
+                      </div>
+
+                      <div class="form-outline form-white mb-1 col-6">
+                        <label class="form-label" for="typeEmailX">Email</label>
+                        <input type="email"   class="form-control form-control-lg" formControlName="email" [ngClass]="{'is-invalid': form2.email.errors&&(form2.email.touched||form2.email.dirty)}"  />
+                        <div  *ngIf="form2.email.invalid&&(form2.email.touched|| form2.email.dirty)">
+                            <span *ngIf="form2.email.errors.required">Email cannot be empty</span>
+                            <span *ngIf="form2.email.errors.email">Email not valid</span>
+                        </div>
+                      </div>
+                      
+
+
+                    <div class="form-outline form-white mb-1">
+                        <label class="form-label" for="typeEmailX">Username</label>
+                        <input type="text"  class="form-control form-control-lg" formControlName="username" [ngClass]="{'is-invalid': form2.username.errors&&(form2.username.touched||form2.username.dirty)}" />
+                        <div  *ngIf="form2.username.invalid&&(form2.username.touched|| form2.username.dirty)">
+                            <span *ngIf="form2.username.errors.required">username cannot be empty</span>
+                            <span *ngIf="form2.username.errors.pattern">username must be small latters and numbers only</span>
+                            <span *ngIf="form2.username.errors.minlength">Minimum Length is 4</span>
+                            <span *ngIf="form2.username.errors.maxlength">Minimum Length is 10</span>
+
+                        </div>
+                      </div>
+        
+                      <div class="form-outline form-white mb-3">
+                        <label class="form-label" for="typePasswordX">Password</label>
+                        <input type="password" id="password"  class="form-control form-control-lg" formControlName="password" [ngClass]="{'is-invalid': form2.password.errors&&(form2.password.touched||form2.password.dirty)}" />
+      
+                        <div  *ngIf="form2.password.invalid&&(form2.password.touched|| form2.password.dirty) ">
+                            <span *ngIf="form2.password.errors.required">Field can not be empty</span>
+                            <span *ngIf="form2.password.errors.pattern">Password must contain at least one uppercase letter, one lowercase letter, one number, and one symbol must need more than 8 charecters</span>
+                        </div>
+                      </div>
+                      
+                      
+
+                </div>
+                <div class="form-outline form-white mb-3">
+                    <label class="form-label" for="typePasswordX">re-enter Password</label>
+                    <input type="password" id="typePasswordX" class="form-control form-control-lg"formControlName="repassword" [ngClass]="{'is-invalid': form2.repassword.errors&&(form2.repassword.touched||form2.repassword.dirty)}" />
+  
+                  </div>
+
+  
+                
+  
+                <!-- <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p> -->
+  
+                <button class="btn btn-outline-light  px-5" [disabled]="!signup.valid"  type="submit">Sign up</button>
+  
+                <!-- <div class="d-flex justify-content-center text-center mt-4 pt-1">
+                  <a href="#!" class="text-white"><i class="bi bi-facebook"></i></a>
+                  <a href="#!" class="text-white"><i class="fab fa-twitter fa-lg mx-4 px-2"></i></a>
+                  <a href="#!" class="text-white"><i class="fab fa-google fa-lg"></i></a>
+                </div> -->
+  
+              </form>
+  
+              <div>
+                <p >Have an account? <a routerLink="/" class="text-white-50 fw-bold">Login</a>
+                </p>
+              </div>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

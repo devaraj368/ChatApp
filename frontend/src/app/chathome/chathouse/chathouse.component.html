@@ -1,0 +1,78 @@
+
+<div class="chathome">
+    <div class="row " style="display: flex;">
+        <div *ngIf="roomconnect"  class=" p-3" style="display: flex; justify-content: space-between; background-color: #ccc;">
+            <p>{{roomconnect}}</p> 
+            
+            <!-- options -->
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item>
+                    <mat-icon>volume_mute</mat-icon>
+                    <span>mute</span>
+                </button>
+
+                <button mat-menu-item (click)="blockUser()">
+                    <mat-icon>block</mat-icon>
+                    <span>Block</span>
+                </button>
+                <button mat-menu-item (click)="unblockUser()">
+                    <mat-icon>block</mat-icon>
+                    <span>Un block</span>
+                </button>
+                <!-- <button mat-menu-item>
+                    <mat-icon>notifications_off</mat-icon>
+                    <span>Disable alerts</span>
+                </button> -->
+            </mat-menu>
+        </div>
+        
+        <div class="row ">
+            <div class="row scrollbar " id="style-3" >
+                <div class="messagearr">
+                    <ul id="messages"   *ngFor="let message of  storedMessages" [ngClass]="{'right': message.sender === this.room}"style="padding-right: 50%; padding-bottom: 10px;">
+                        <li   class="card bg-primary" style="margin: 2px;border: none; ">
+                            
+                            <p class="card bg-primary" style=" color: #FFFFFF;border: none;">{{message.sender}}: {{message.message}}</p>
+                            <h6 class="card bg-primary"style=" color: #000000; border: none;">{{ message.timestamp | date:'dd-MM-yyyy' }} {{ message.timestamp | date:'HH:mm' }}</h6>
+    
+                        </li>
+                        
+                    </ul>
+                    <!-- <ul id="messages"   *ngFor="let message of  getNewMessag" style="padding-right: 50%; padding-bottom: 10px;">
+                        <li class="card" style="background-color: #4570B7; margin: 2px; ">
+                            
+                            <p style="background-color: #4570B7; color: #FFFFFF;">{{message}}</p>
+    
+                        </li>
+                        
+                    </ul> -->
+                    <ul id="messages" *ngFor="let message of  messageList" style="padding-left: 50%;">
+                        <li style=" margin: 2px;">
+                           <p style="color: #FFFFFF;"> {{message}}</p>
+                            
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+            <div class="col-6">
+                <form action="">
+                    <div class="input-group">
+                        <input [(ngModel)]="newMessage" name="newMessage" (keyup)="$event.keyCode == 13 && sendMessage()"  class="form-control" placeholder="Message">
+                        <button (click)="sendMessage()" class="btn btn-outline-secondary">Send</button>
+
+                        
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+       
+    </div>
+</div> 
+
+
+

@@ -1,0 +1,56 @@
+<div class="container-fluid">
+    <div class="row  " style="background-color: #CCC1E0;" >
+        <div class="col-3">
+            <div class="container-fluid vh-100" style="background-color: #fff;">
+                <div class="row " style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 20px;">
+                    <!-- <div class="col-10">
+                        <div class="input-group">
+                            <input id="m" autocomplete="off" type="text" class="form-control" placeholder="Username" aria-label="Mesage...">
+                            <button class="btn btn-outline-secondary" type="submit">Search</button>
+                        </div> 
+                    </div> -->
+                    <div class="col-2" style="padding-top: 10px;">
+                        
+                        
+                       
+                        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                            <mat-icon>more_vert</mat-icon>
+                          </button>
+                          <mat-menu #menu="matMenu">
+                            <button mat-menu-item (click)="logout()">
+                              <mat-icon>logout</mat-icon>
+                              <span>Logout</span>
+                            </button>
+                            <!-- <button mat-menu-item disabled>
+                              <mat-icon>voicemail</mat-icon>
+                              <span>Check voice mail</span>
+                            </button>
+                            <button mat-menu-item>
+                              <mat-icon>notifications_off</mat-icon>
+                              <span>Disable alerts</span>
+                            </button> -->
+                          </mat-menu>
+
+                    </div>
+                    
+                </div>
+                <!-- users -->
+                <div class="card p-2 bg-primary " style="display: flex;  justify-content: space-between; margin-bottom: 5px; " *ngFor="let user of username" (click)="reload()">
+                    <p class="text-white p-2 " routerLink="a/{{user.username}}" >
+                        <a style="text-decoration: none; color: white;" >{{user.name}}</a>
+                        
+                    </p>
+                    
+                </div>
+                
+                
+            </div>
+        </div>
+        <!-- chat house -->
+        <div class="col-9">
+            
+            <router-outlet></router-outlet>
+        
+        </div>
+    </div>
+</div>
